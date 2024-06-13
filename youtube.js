@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = 'AIzaSyB9j-AqjqxCIAJwcss_W-oP5WgbyLadO-U'; // Substitua com sua chave de API do YouTube
+const API_KEY = //'AIzaSyB9j-AqjqxCIAJwcss_W-oP5WgbyLadO-U'; // Substitua com sua chave de API do YouTube
 
 export const buscarVideos = async (query) => {
   try {

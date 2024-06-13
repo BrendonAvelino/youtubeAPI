@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const CLIENT_ID = 'cba134cc15700cc1e1b61a9bf9754539b57ca4af'; // Sua chave de API do Vimeo
-const CLIENT_SECRET = 'b2rFNDnwflHcas/sIFynTWCN0c07bXN69V15KE3VF9E6hZEh5DKZvXFIeU4dwkmJo+niuFJwi70dtjUHv0CQtJpqtKV+Z/L1o3A2VxRjpIV1MHIrr6M8dJ8vzsG0RpVn'; // Seu segredo de cliente do Vimeo
-const TOKEN_URL = 'https://api.vimeo.com/oauth/access_token';
+const CLIENT_ID = //'cba134cc15700cc1e1b61a9bf9754539b57ca4af'; 
+const CLIENT_SECRET = //'b2rFNDnwflHcas/sIFynTWCN0c07bXN69V15KE3VF9E6hZEh5DKZvXFIeU4dwkmJo+niuFJwi70dtjUHv0CQtJpqtKV+Z/L1o3A2VxRjpIV1MHIrr6M8dJ8vzsG0RpVn'; // Seu segredo de cliente do Vimeo
+const TOKEN_URL = //'https://api.vimeo.com/oauth/access_token';
 
 const getAccessToken = async () => {
   try {
