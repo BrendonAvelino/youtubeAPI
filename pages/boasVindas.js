@@ -1,11 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function boasVindas() {
+export default function BoasVindas({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Boas Vindas!</Text>
-      <StatusBar style="auto" />
+      <Button
+        title="Pesquisar no YouTube e Vimeo"
+        onPress={() => navigation.navigate('RotaInterna')}
+      />
     </View>
   );
 }

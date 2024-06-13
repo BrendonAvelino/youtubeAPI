@@ -1,29 +1,37 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from '@expo/vector-icons/';
-
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Image } from 'react-native';
+import YoutubeSearchScreen from './YoutubeSearchScreen';
 import Vimeo from './Vimeo';
-import App from '../App'
 
 const Tab = createBottomTabNavigator();
 
+const youtubeIcon = require('../assets/youtube_icon.png'); // Exemplo de ícone local
+const vimeoIcon = require('../assets/vimeo_icon.png'); // Exemplo de ícone local
+
 export default function RotaInterna() {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused }) => {
+          let iconName;
 
-    const [info1, setInfo1] = useState('');
-    const [info2, setInfo2] = useState('');
+          if (route.name === 'YouTube') {
+            iconName = youtubeIcon;
+          } else if (route.name === 'Vimeo') {
+            iconName = vimeoIcon;
+          }
 
-    return (
-
-        <Tab.Navigator>
-            <Tab.Screen
-            name="Vimeo"
-            component="Vimeo"
-            >
-            </Tab.Screen>
-
-            <Tab.Screen
-            name="App"
-            component="App"
-            ></Tab.Screen>
-        </Tab.Navigator>
-    )
+          return <Image source={iconName} style={{ width: 20, height: 20 }} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray',
+      }}
+    >
+      <Tab.Screen name="YouTube" component={YoutubeSearchScreen} />
+      <Tab.Screen name="Vimeo" component={Vimeo} />
+    </Tab.Navigator>
+  );
 }

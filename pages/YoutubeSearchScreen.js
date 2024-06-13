@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity, Text, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { WebView } from 'react-native-webview';
-import { buscarVideosVimeo } from '../vimeo';
+import { buscarVideos } from '../youtube';
 
-export default function Vimeo() {
+export default function YouTube() {
   const [pesquisa, setPesquisa] = useState('');
   const [videos, setVideos] = useState([]);
   const [mensagem, setMensagem] = useState('');
 
   const pesquisar = async () => {
     try {
-      const resultados = await buscarVideosVimeo(pesquisa);
+      const resultados = await buscarVideos(pesquisa);
       if (resultados.length === 0) {
         setMensagem('Nenhum Vídeo encontrado');
-        setVideos([]);
       } else {
         setMensagem('');
         setVideos(resultados);
@@ -21,7 +20,6 @@ export default function Vimeo() {
     } catch (erro) {
       console.error('Erro ao pesquisar vídeos:', erro);
       setMensagem('Erro ao pesquisar vídeos');
-      setVideos([]);
     }
   };
 
@@ -43,13 +41,13 @@ export default function Vimeo() {
           <Text style={estilos.mensagem}>{mensagem}</Text>
         ) : (
           videos.map(video => (
-            <View key={video.uri} style={estilos.containerVideo}>
-              <Text style={estilos.tituloVideo}>{video.name}</Text>
+            <View key={video.id.videoId} style={estilos.containerVideo}>
+              <Text style={estilos.tituloVideo}>{video.snippet.title}</Text>
               <WebView
                 style={estilos.webview}
                 javaScriptEnabled={true}
                 domStorageEnabled={true}
-                source={{ html: `<iframe width="100%" height="315" src="https://player.vimeo.com/video/${video.uri.split('/').pop()}" frameborder="0" allowfullscreen></iframe>` }}
+                source={{ html: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${video.id.videoId}" frameborder="0" allowfullscreen></iframe>` }}
               />
             </View>
           ))
