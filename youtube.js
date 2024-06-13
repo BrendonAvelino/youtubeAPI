@@ -14,7 +14,7 @@ export const buscarVideos = async (query) => {
       },
     });
 
-    return resposta.data.items; // Retorna os itens de vídeo encontrados
+    return resposta.data.items; 
   } catch (erro) {
     console.error('Erro ao buscar vídeos do YouTube:', erro);
     throw erro;
